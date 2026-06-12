@@ -1,5 +1,6 @@
 package com.petclinic.saudepetclinic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,7 @@ public class Animal {
 
     @ManyToOne
     @JoinColumn(name = "tutor_id")
+    @JsonBackReference
     private Tutor tutor;
 
     public Long getId() { return id; }

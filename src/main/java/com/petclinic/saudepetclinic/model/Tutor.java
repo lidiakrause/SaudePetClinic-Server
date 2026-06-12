@@ -1,5 +1,7 @@
 package com.petclinic.saudepetclinic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -17,7 +19,9 @@ public class Tutor {
     private String numero;
     private String cep;
 
+
     @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Animal> animais;
 
     public Long getId() { return id; }
