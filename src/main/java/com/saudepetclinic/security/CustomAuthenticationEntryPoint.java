@@ -17,10 +17,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-    private static final String MESSAGE =
-            "Autenticação necessária. Informe um token JWT válido no header "
-                    + "'Authorization: Bearer {token}'.";
-
     private final ObjectMapper objectMapper;
 
     @Override
@@ -37,8 +33,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
                 response.getWriter(),
                 new ErrorResponse(
                         HttpStatus.UNAUTHORIZED.value(),
-                        "Unauthorized",
-                        MESSAGE
+                        "Unauthorized"
                 )
         );
     }
