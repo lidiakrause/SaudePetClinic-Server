@@ -144,6 +144,10 @@ public class UsuarioService {
                     usuario.getClinica() != null ? usuario.getClinica().getIdClinica() : null, ctx);
         }
 
+        if (usuario.getPerfil() == Perfil.VETERINARIO) {
+            agendaConfigService.sincronizar(usuario, null, null, false, false);
+        }
+
         usuarioRepository.delete(usuario);
     }
 
